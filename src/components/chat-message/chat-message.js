@@ -10,14 +10,11 @@ import { useCollectionData } from 'react-firebase-hooks/firestore'
 const auth = firebase.auth();
 const firestore = firebase.firestore();
 
-function SignIn() {
-    const signInWithGoogle = () => {
-        const provider = new firebase.auth.GoogleAuthProvider()
-        auth.signInWithPopup(provider)
-    }
+function ChatMessage() {
+    const {text, uid} = props.message
     return (
-        <button onClick={signInWithGoogle}>Sign in with Google</button>
+        <p>{text}</p>
     )
 }
 
-export default SignIn
+export default ChatMessage

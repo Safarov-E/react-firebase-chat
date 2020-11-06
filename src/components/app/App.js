@@ -1,4 +1,7 @@
 import React from 'react'
+import ChatRoom from '../chat-room'
+import SignIn from '../sign-in'
+
 import './App.css';
 
 import firebase from 'firebase/app'
