@@ -1,6 +1,4 @@
 import React from 'react'
-import ChatRoom from '../chat-room'
-import SignIn from '../sign-in'
 
 import './App.css';
 
@@ -36,6 +34,49 @@ function App() {
       </section>
     </div>
   );
+}
+
+function SignIn() {
+  const signInWithGoogle = () => {
+      const provider = new firebase.auth.GoogleAuthProvider()
+      auth.signInWithPopup(provider)
+  }
+  return (
+      <button onClick={signInWithGoogle}>Sign in with Google</button>
+  )
+}
+
+function SignOut() {
+  return auth.currentUser && (
+      <button onClick={() => auth.SignOut()}>Sign Out</button>
+  )
+}
+
+function ChatMessage() {
+  const {text, uid, photoURL} = props.message
+  const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received'
+  return (
+      <div className={`message ${messageClass}`}>
+        <img src={photoURL} />
+        <p>{text}</p>
+      </div>
+  )
+}
+
+function ChatRoom() {
+  const messagesRef = firestore.collection('messages');
+  const query = messagesRef.orderBy('createdAt').limit(25)
+  const [messages] = useCollectionData(query, {idField: 'id'})
+  return (
+      <>
+          <div>
+              {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
+          </div>
+          <div>
+
+          </div>
+      </>
+  )
 }
 
 export default App;
