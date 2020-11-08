@@ -11,14 +11,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 firebase.initializeApp({
-  apiKey: "AIzaSyBrgFTE--d8KIxrnISOJcGu9RRSDeUKniM",
-  authDomain: "fireship-demos-910cf.firebaseapp.com",
-  databaseURL: "https://fireship-demos-910cf.firebaseio.com",
-  projectId: "fireship-demos-910cf",
-  storageBucket: "fireship-demos-910cf.appspot.com",
-  messagingSenderId: "990352423691",
-  appId: "1:990352423691:web:73f82a75a64cbe0a6d400e",
-  measurementId: "G-ZM5X4F1KDE"
+  // конфигурация
 })
 const auth = firebase.auth();
 const firestore = firebase.firestore();
